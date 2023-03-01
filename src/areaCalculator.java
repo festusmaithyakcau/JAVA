@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class areaCalculator {
     public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
+        Scanner reader = new Scanner(System.in);
         final int TRIANGLE = 1;
         final int RECTANGLE = 2;
         final int CIRCLE = 3;
@@ -13,28 +13,28 @@ public class areaCalculator {
 
         do {
             System.out.println("Enter 1 for triangle \nEnter 2 for rectangle \nEnter 3 for circle:");
-            choice = input.nextInt();
+            choice = reader.nextInt();
 
             switch (choice) {
                 case TRIANGLE -> {
                     System.out.println("Enter value of base: ");
-                    base = input.nextDouble();
+                    base = reader.nextDouble();
                     System.out.println("Enter value of height: ");
-                    height = input.nextDouble();
-                    area = (1/2) * base * height;
+                    height = reader.nextDouble();
+                    area = 0.5 * base * height;
                     System.out.println("Area of the triangle is: " + area + " sq.units");
                 }
                 case RECTANGLE -> {
                     System.out.println("Enter value of length: ");
-                    length = input.nextDouble();
+                    length = reader.nextDouble();
                     System.out.println("Enter value of breadth: ");
-                    breadth = input.nextDouble();
+                    breadth = reader.nextDouble();
                     area = length * breadth;
                     System.out.println("Area of the rectangle: " + area + " sq.units");
                 }
                 case CIRCLE -> {
                     System.out.println("Enter radius:");
-                    radius = input.nextDouble();
+                    radius = reader.nextDouble();
                     area = Math.PI * Math.pow(radius, 2);
                     System.out.println("Area of circle: " + area +" sq.units");
                 }
@@ -51,7 +51,7 @@ public class areaCalculator {
                 }
             }
             System.out.println("Do you want to calculate another area for a figure? (Y/N)");
-            answer = input.next();
+            answer = reader.next();
         } while ("Y".equalsIgnoreCase(Objects.requireNonNull(answer)) && attempts < 3);
 
         System.out.println("Program ended.");

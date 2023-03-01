@@ -2,20 +2,20 @@ import java.util.Scanner;
 
 public class CreditWorthiness {
     public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
+        Scanner reader = new Scanner(System.in);
 
         System.out.print("Enter the number of customers: ");
-        int numCustomers = input.nextInt();
+        int numCustomers = reader.nextInt();
 
         for (int i = 1; i <= numCustomers; i++) {
             System.out.print("Enter the credit limit: ");
-            double creditLimit = input.nextDouble();
+            double creditLimit = reader.nextDouble();
 
             System.out.print("Enter the price of the item: ");
-            double price = input.nextDouble();
+            double price = reader.nextDouble();
 
             System.out.print("Enter the quantity of the item: ");
-            int quantity = input.nextInt();
+            int quantity = reader.nextInt();
 
             double total = price * quantity;
 
