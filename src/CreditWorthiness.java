@@ -20,7 +20,7 @@ public class CreditWorthiness {
             double total = price * quantity;
 
             if (total > creditLimit) {
-                System.out.println("Sorry you cannot purchase goods worth such a value on credit");
+                System.out.println("Sorry you cannot purchase goods worthy such a value on credit");
             } else {
                 System.out.printf("Thank you for purchasing from us. The value of the purchase is $%.2f\n", total);
             }

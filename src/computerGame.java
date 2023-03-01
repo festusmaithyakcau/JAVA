@@ -1,41 +1,63 @@
+import java.util.Random;
 import java.util.Scanner;
-
 public class computerGame {
-    public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
-
-        System.out.print("Enter the number of rounds you wish to play: ");
-        int rounds = input.nextInt();
-
-        int secretNumber = 7; // You can change this to any secret number you like
+    public static void main(String[] args)
+    {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Please enter the number of rounds to play: ");
+        int rounds = Integer.parseInt(sc.nextLine().trim());
         int totalScore = 0;
 
-        for (int i = 1; i <= rounds; i++) {
-            System.out.printf("Round %d: Enter your lucky number: ", i);
-            int luckyNumber = input.nextInt();
 
-            int remainder = luckyNumber % secretNumber;
-            if (remainder == 0) {
+
+        System.out.println("\nTHE GAME BEGINS !!!\n-------------------");
+
+        for(int i = 0; i < rounds; i++)
+        {
+            // generate a random number for the secret number
+            Random rand = new Random();
+            int secret = 0 + rand.nextInt(10);
+            while(secret <= 0 || secret >= 10)
+            {
+                secret = 0 + rand.nextInt(10);
+            }
+
+            System.out.print("Please enter your lucky number: ");
+            int lucky = Integer.parseInt(sc.nextLine().trim());
+            int remainder = (lucky % secret);
+            System.out.println(lucky + " % " + secret + " = " + remainder);
+
+            if(remainder == 0)
+            {
+                System.out.println("Result for round " + (i + 1) + ": Draw\n");
                 totalScore += 1;
-                System.out.println("It's a draw!");
-            } else if (remainder % 2 == 0) {
-                totalScore += 3;
-                System.out.println("You win!");
-            } else {
-                totalScore -= 3;
-                System.out.println("You lose!");
+            }
+            else
+            {
+                if(isEven(remainder))
+                {
+                    System.out.println("Result for round " + (i + 1) + ": Win\n");
+                    totalScore += 3;
+                }
+                else
+                {
+                    System.out.println("Result for round " + (i + 1) + ": Lose\n");
+                    totalScore -= 3;
+                }
             }
         }
-        System.out.println("Total score: " + totalScore);
 
-        if (totalScore > 0) {
-            System.out.println("Congratulations! You win!");
-        } else {
-            System.out.println("Sorry, you lose.");
-        }
-
-        input.close();
+        if(totalScore > 0)
+            System.out.println("Congratulations, you won the whole game!\n");
+        else
+            System.out.println("Sorry, you lost the game...better luck next time!\n");
     }
 
+    private static boolean isEven(int n)
+    {
+        if(n % 2 == 0)
+            return true;
+        else
+            return false;
+    }
 }
-
